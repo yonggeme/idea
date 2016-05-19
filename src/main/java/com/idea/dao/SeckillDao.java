@@ -1,0 +1,38 @@
+package com.idea.dao;
+
+import com.idea.entity.Seckill;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.Date;
+import java.util.List;
+
+/**
+ * seckill借口
+ * Created by Administrator on 2016/5/19.
+ */
+public interface SeckillDao {
+
+    /**
+     * 通过偏移量查询seckill
+     * @param offset
+     * @param limit
+     * @return
+     */
+    List<Seckill> queryAll(@Param("offset") int offset,@Param("limit") int limit);
+
+    /**
+     * 通过id查询秒杀seckill
+     * @param seckillId
+     * @return
+     */
+    Seckill queryById(long seckillId);
+
+    /**
+     * 减库存
+     * @param seckillId
+     * @param seckillDateTime
+     * @return
+     */
+    int reduceNumber(long seckillId, Date seckillDateTime);
+
+}
