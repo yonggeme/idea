@@ -5,10 +5,10 @@
 <mapper namespace="com.idea.dao.SuccessSeckilledDao">
 
     <insert id="insertSuccessSeckilled">
-        INSERT INTO ignore success_seckilled(seckill_id,userPhone,sate) VALUES (#{seckillId},#{userPhone},1);
+        INSERT ignore INTO success_seckilled(seckill_id,user_phone,state) VALUES (#{seckillId},#{userPhone},1);
     </insert>
 
-    <select id="queryBySeckillId">
+    <select id="queryBySeckillId" resultType="SuccessSeckilled">
         SELECT
           sk.seckill_id,
           sk.user_phone,
@@ -19,9 +19,10 @@
           k.number 'seckill.number',
           k.start_time 'seckill.start_time',
           k.end_time 'seckill.end_time',
-          k.create_time 'seckill_end_time'
+          k.create_time 'seckill.create_time'
         FROM success_seckilled sk
         INNER JOIN seckill k on sk.seckill_id = k.seckill_id
-        WHERE sk.seckill_id = #{seckillId};
+        WHERE sk.seckill_id = #{seckillId}
+          AND sk.user_phone = #{userPhone};
     </select>
 </mapper>

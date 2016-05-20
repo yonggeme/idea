@@ -25,7 +25,7 @@ public interface SeckillDao {
      * @param seckillId
      * @return
      */
-    Seckill queryById(long seckillId);
+    Seckill queryById(@Param("seckillId") long seckillId);
 
     /**
      * 减库存
@@ -33,6 +33,6 @@ public interface SeckillDao {
      * @param seckillDateTime
      * @return
      */
-    int reduceNumber(long seckillId, Date seckillDateTime);
+    int reduceNumber(@Param("seckillId") long seckillId,@Param("seckillDateTime") Date seckillDateTime);
 
 }

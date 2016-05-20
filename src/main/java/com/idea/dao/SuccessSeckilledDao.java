@@ -1,6 +1,7 @@
 package com.idea.dao;
 
 import com.idea.entity.SuccessSeckilled;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -16,13 +17,13 @@ public interface SuccessSeckilledDao {
      * @param userPhone
      * @return
      */
-    int insertSuccessSeckilled(long seckillId, long userPhone);
+    int insertSuccessSeckilled(@Param("seckillId") long seckillId,@Param("userPhone") long userPhone);
 
     /**
      * 通过seckillId查询秒杀成功明细列表
      * @param seckillId
      * @return
      */
-    List<SuccessSeckilled> queryBySeckillId(long seckillId);
+    SuccessSeckilled queryBySeckillId(@Param("seckillId") long seckillId, @Param("userPhone") long userPhone);
 
 }

@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -38,12 +39,17 @@ public class SeckillDaoTest {
 
     @Test
     public void queryById() throws Exception {
-
+        long id = 1002;
+        Seckill seckill = seckillDao.queryById(id);
+        System.out.println(seckill);
     }
 
     @Test
     public void reduceNumber() throws Exception {
-
+        long id = 1002;
+        Date date = new Date();
+        int rows = seckillDao.reduceNumber(id,date);
+        logger.debug("rows = {}",rows);
     }
 
 }
