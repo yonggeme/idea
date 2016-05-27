@@ -22,9 +22,10 @@ public class Exporer {
     public Exporer() {
     }
 
-    public Exporer(boolean isExporer, String md5) {
+    public Exporer(boolean isExporer, String md5, long seckillId) {
         this.isExporer = isExporer;
         this.md5 = md5;
+        this.seckillId = seckillId;
     }
 
     public Exporer(boolean isExporer, long seckillId) {
@@ -85,5 +86,17 @@ public class Exporer {
 
     public void setSeckillId(long seckillId) {
         this.seckillId = seckillId;
+    }
+
+    @Override
+    public String toString() {
+        return "Exporer{" +
+                "isExporer=" + isExporer +
+                ", seckillId=" + seckillId +
+                ", md5='" + md5 + '\'' +
+                ", setartTime=" + setartTime +
+                ", endTime=" + endTime +
+                ", now=" + now +
+                '}';
     }
 }

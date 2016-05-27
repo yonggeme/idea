@@ -1,15 +1,13 @@
 package com.idea.service;
 
 import com.idea.dto.Exporer;
-import com.idea.dto.SeckillExcution;
+import com.idea.dto.Execution;
 import com.idea.entity.Seckill;
-import com.idea.entity.SuccessSeckilled;
-import com.idea.exception.SeckillCloseException;
-import com.idea.exception.SeckillDataReWriteException;
+import com.idea.exception.CloseException;
+import com.idea.exception.DataReWriteException;
 import com.idea.exception.SeckillException;
-import com.idea.exception.SeckillRepeatException;
+import com.idea.exception.RepeatException;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,7 +42,7 @@ public interface SeckillService {
      * @param userPhone
      * @return
      */
-    SeckillExcution executeSeckill(long seckillId, String md5, long userPhone)
-            throws SeckillCloseException, SeckillDataReWriteException, SeckillRepeatException, SeckillException;
+    Execution executeSeckill(long seckillId, String md5, long userPhone)
+            throws CloseException, DataReWriteException, RepeatException, SeckillException;
 
 }
