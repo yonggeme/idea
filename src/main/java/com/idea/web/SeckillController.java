@@ -16,21 +16,23 @@ import java.util.List;
 /**
  * Created by zhangyong on 16/5/27.
  */
-@Controller("/seckill")
+@Controller
+@RequestMapping("/seckill")
 public class SeckillController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private SeckillService seckillService;
 
-    @RequestMapping(name = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String list(Model model){
         List<Seckill> seckillList = seckillService.queryAll();
+        logger.info("{}", seckillList);
         model.addAttribute("seckillList", seckillList);
         return "list";  //WEB-INF/jsp/list.jsp
     }
 
-    @RequestMapping(name = "/{seckillId}/detail", method = RequestMethod.GET)
+    @RequestMapping(value = "/{seckillId}/detail", method = RequestMethod.GET)
     public String queryById(@PathVariable("seckillId") Long seckillId, Model model){
         if (seckillId == null){
             return "redirect:/seckill/list";
