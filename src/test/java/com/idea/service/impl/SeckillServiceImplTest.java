@@ -1,9 +1,8 @@
 package com.idea.service.impl;
 
 import com.idea.dto.Execution;
-import com.idea.dto.Exporer;
+import com.idea.dto.Exposer;
 import com.idea.entity.Seckill;
-import com.idea.enums.SeckillState;
 import com.idea.exception.CloseException;
 import com.idea.exception.DataReWriteException;
 import com.idea.exception.RepeatException;
@@ -49,8 +48,8 @@ public class SeckillServiceImplTest {
     @Test
     public void testExportSeckillUrl() throws Exception {
         long id = 1002;
-        Exporer exporer= seckillService.exportSeckillUrl(id);
-        logger.debug("{}", exporer);
+        Exposer exposer = seckillService.exportSeckillUrl(id);
+        logger.debug("{}", exposer);
     }
 
     @Test
@@ -67,9 +66,9 @@ public class SeckillServiceImplTest {
         long id = 1002;
         long userPhone = 11122223333L;
         try {
-            Exporer exporer = seckillService.exportSeckillUrl(id);
-            if (exporer.isExporer()) {
-                Execution execution = seckillService.executeSeckill(exporer.getSeckillId(), exporer.getMd5(), userPhone);
+            Exposer exposer = seckillService.exportSeckillUrl(id);
+            if (exposer.isExporer()) {
+                Execution execution = seckillService.executeSeckill(exposer.getSeckillId(), exposer.getMd5(), userPhone);
                 logger.info("{}", execution);
             } else {
                 throw new CloseException("seckill closed!");

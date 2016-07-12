@@ -1,6 +1,6 @@
 package com.idea.service;
 
-import com.idea.dto.Exporer;
+import com.idea.dto.Exposer;
 import com.idea.dto.Execution;
 import com.idea.entity.Seckill;
 import com.idea.exception.CloseException;
@@ -34,7 +34,7 @@ public interface SeckillService {
      * 暴漏秒杀接口地址
      * @return
      */
-    Exporer exportSeckillUrl(long seckillId);
+    Exposer exportSeckillUrl(long seckillId);
 
     /**
      * 执行秒杀接口

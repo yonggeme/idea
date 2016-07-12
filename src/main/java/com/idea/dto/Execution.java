@@ -26,7 +26,6 @@ public class Execution {
     }
 
     public Execution(long seckillId, SeckillState seckillState, SuccessSeckilled successSeckilled) {
-        this.state = state;
         this.seckillId = seckillId;
         this.state = seckillState.getState();
         this.stateInfo = seckillState.getStateInfo();

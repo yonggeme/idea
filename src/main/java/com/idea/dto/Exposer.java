@@ -1,11 +1,9 @@
 package com.idea.dto;
 
-import java.util.Date;
-
 /**
  * Created by Administrator on 2016/5/21.
  */
-public class Exporer {
+public class Exposer {
 
     private boolean isExporer;
 
@@ -13,29 +11,29 @@ public class Exporer {
 
     private String md5;
 
-    private long setartTime;
+    private long startTime;
 
     private long endTime;
 
     private long now;
 
-    public Exporer() {
+    public Exposer() {
     }
 
-    public Exporer(boolean isExporer, String md5, long seckillId) {
+    public Exposer(boolean isExporer, String md5, long seckillId) {
         this.isExporer = isExporer;
         this.md5 = md5;
         this.seckillId = seckillId;
     }
 
-    public Exporer(boolean isExporer, long seckillId) {
+    public Exposer(boolean isExporer, long seckillId) {
         this.isExporer = isExporer;
         this.seckillId = seckillId;
     }
 
-    public Exporer(boolean isExporer, long setartTime, long endTime, long now){
+    public Exposer(boolean isExporer, long startTime, long endTime, long now){
         this.isExporer = isExporer;
-        this.setartTime = setartTime;
+        this.startTime = startTime;
         this.endTime = endTime;
         this.now = now;
     }
@@ -56,12 +54,12 @@ public class Exporer {
         this.md5 = md5;
     }
 
-    public long getSetartTime() {
-        return setartTime;
+    public long getStartTime() {
+        return startTime;
     }
 
-    public void setSetartTime(long setartTime) {
-        this.setartTime = setartTime;
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
     }
 
     public long getEndTime() {
@@ -90,11 +88,11 @@ public class Exporer {
 
     @Override
     public String toString() {
-        return "Exporer{" +
+        return "Exposer{" +
                 "isExporer=" + isExporer +
                 ", seckillId=" + seckillId +
                 ", md5='" + md5 + '\'' +
-                ", setartTime=" + setartTime +
+                ", startTime=" + startTime +
                 ", endTime=" + endTime +
                 ", now=" + now +
                 '}';

@@ -2,7 +2,7 @@ package com.idea.service.impl;
 
 import com.idea.dao.SeckillDao;
 import com.idea.dao.SuccessSeckilledDao;
-import com.idea.dto.Exporer;
+import com.idea.dto.Exposer;
 import com.idea.dto.Execution;
 import com.idea.entity.Seckill;
 import com.idea.entity.SuccessSeckilled;
@@ -16,10 +16,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.DigestUtils;
+import static org.springframework.util.DigestUtils.md5DigestAsHex;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.List;
+
 
 /**
  * Created by Administrator on 2016/5/21.
@@ -28,7 +30,7 @@ import java.util.List;
 public class SeckillServiceImpl implements SeckillService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private final String confusion = "gdajls/gdsaj;lgajsdlk2039t9uaskldgjalksdmgals)pgajslk7";
+    private static final String confusion = "gdajls/gdsaj;lgajsdlk2039t9uaskldgjalksdmgals)pgajslk7";
 
 
     @Autowired
@@ -48,19 +50,19 @@ public class SeckillServiceImpl implements SeckillService {
         return seckillDao.queryById(seckillId);
     }
 
-    public Exporer exportSeckillUrl(long seckillId) {
+    public Exposer exportSeckillUrl(long seckillId) {
         Seckill seckill = seckillDao.queryById(seckillId);
         if (seckill == null){
-            return new Exporer(false, seckillId);
+            return new Exposer(false, seckillId);
         }
         long startTime = seckill.getStartTime().getTime();
         long endTime = seckill.getEndTime().getTime();
         long now = new Date().getTime();
         if (now < startTime || now > endTime){
-            return new Exporer(false, startTime, endTime, now);
+            return new Exposer(false, startTime, endTime, now);
         }
         String md5 = getMd5(seckillId);
-        return new Exporer(true, md5, seckillId);
+        return new Exposer(true, md5, seckillId);
     }
 
     public Execution executeSeckill(long seckillId, String md5, long userPhone)
@@ -96,7 +98,12 @@ public class SeckillServiceImpl implements SeckillService {
 
     public String getMd5(long seckillId){
         String str = seckillId + confusion;
-        String md5 = DigestUtils.md5DigestAsHex(str.getBytes());
-        return md5;
+        try {
+            return md5DigestAsHex(str.getBytes("UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            logger.error("get md5 error!, e = {}", e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
     }
 }
