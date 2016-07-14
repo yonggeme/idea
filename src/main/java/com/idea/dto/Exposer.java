@@ -5,7 +5,7 @@ package com.idea.dto;
  */
 public class Exposer {
 
-    private boolean isExporer;
+    private boolean exposered;
 
     private long seckillId;
 
@@ -20,30 +20,30 @@ public class Exposer {
     public Exposer() {
     }
 
-    public Exposer(boolean isExporer, String md5, long seckillId) {
-        this.isExporer = isExporer;
+    public Exposer(boolean exposered, String md5, long seckillId) {
+        this.exposered = exposered;
         this.md5 = md5;
         this.seckillId = seckillId;
     }
 
-    public Exposer(boolean isExporer, long seckillId) {
-        this.isExporer = isExporer;
+    public Exposer(boolean exposered, long seckillId) {
+        this.exposered = exposered;
         this.seckillId = seckillId;
     }
 
-    public Exposer(boolean isExporer, long startTime, long endTime, long now){
-        this.isExporer = isExporer;
+    public Exposer(boolean exposered, long startTime, long endTime, long now){
+        this.exposered = exposered;
         this.startTime = startTime;
         this.endTime = endTime;
         this.now = now;
     }
 
-    public boolean isExporer() {
-        return isExporer;
+    public boolean isExposered() {
+        return exposered;
     }
 
-    public void setExporer(boolean exporer) {
-        isExporer = exporer;
+    public void setExposered(boolean exposered) {
+        this.exposered = exposered;
     }
 
     public String getMd5() {
@@ -89,7 +89,7 @@ public class Exposer {
     @Override
     public String toString() {
         return "Exposer{" +
-                "isExporer=" + isExporer +
+                "exposered=" + exposered +
                 ", seckillId=" + seckillId +
                 ", md5='" + md5 + '\'' +
                 ", startTime=" + startTime +

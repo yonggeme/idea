@@ -67,7 +67,7 @@ public class SeckillServiceImplTest {
         long userPhone = 11122223333L;
         try {
             Exposer exposer = seckillService.exportSeckillUrl(id);
-            if (exposer.isExporer()) {
+            if (exposer.isExposered()) {
                 Execution execution = seckillService.executeSeckill(exposer.getSeckillId(), exposer.getMd5(), userPhone);
                 logger.info("{}", execution);
             } else {

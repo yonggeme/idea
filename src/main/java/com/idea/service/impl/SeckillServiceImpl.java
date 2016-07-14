@@ -16,6 +16,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import static org.springframework.util.DigestUtils.md5DigestAsHex;
 
 import java.io.UnsupportedEncodingException;
@@ -65,6 +67,7 @@ public class SeckillServiceImpl implements SeckillService {
         return new Exposer(true, md5, seckillId);
     }
 
+    @Transactional
     public Execution executeSeckill(long seckillId, String md5, long userPhone)
             throws CloseException, DataReWriteException, RepeatException, SeckillException {
         try {
@@ -77,7 +80,7 @@ public class SeckillServiceImpl implements SeckillService {
             }
             int insertCount = successSeckilledDao.insertSuccessSeckilled(seckillId, userPhone);
             if (insertCount == 0) {
-                throw new DataReWriteException("repeat seckill!");
+                throw new RepeatException("repeat seckill!");
             }
 
             SuccessSeckilled successSeckilled = successSeckilledDao.queryBySeckillId(seckillId, userPhone);
