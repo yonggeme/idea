@@ -5,7 +5,7 @@
 <configuration>
     <!-- 全局设置 -->
     <settings>
-        <!-- 允许 JDBC 支持自动生成主键，需要驱动兼容。 如果设置为 true 则这个设置强制使用自动生成主键 -->
+        <!-- 允许 JDBC 支持自动生成主键，r。 如果设置为 true 则这个设置强制使用自动生成主键 -->
         <setting name="useGeneratedKeys" value="true"/>
         <!-- 使用列标签代替列名 -->
         <setting name="useColumnLabel" value="true"/>

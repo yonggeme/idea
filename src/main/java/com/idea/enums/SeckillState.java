@@ -14,7 +14,7 @@ public enum  SeckillState {
 
     private String stateInfo;
 
-    private SeckillState stateOf(int state){
+    public static SeckillState stateOf(int state){
         for (SeckillState seckillState :
                 SeckillState.values()) {
             if (seckillState.state == state){

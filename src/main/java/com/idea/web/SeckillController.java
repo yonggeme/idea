@@ -72,22 +72,8 @@ public class SeckillController {
         }
         SeckillResult<Execution> result;
         Execution execution;
-        try {
-            execution = seckillService.executeSeckill(seckillId, md5, userPhone);
-            result = new SeckillResult<Execution>(true, execution);
-        } catch (RepeatException e) {
-            execution = new Execution(seckillId, SeckillState.REPEAT);
-            result = new SeckillResult<Execution>(true, execution);
-        } catch (DataReWriteException e) {
-            execution = new Execution(seckillId, SeckillState.DATA_REWRITE);
-            result = new SeckillResult<Execution>(true, execution);
-        } catch (CloseException e) {
-            execution = new Execution(seckillId, SeckillState.CLOSE);
-            result = new SeckillResult<Execution>(true, execution);
-        } catch (SeckillException e) {
-            execution = new Execution(seckillId, SeckillState.INNER_ERROR);
-            result = new SeckillResult<Execution>(true, execution);
-        }
+        execution = seckillService.executionSeckillByProcedure(seckillId, userPhone, md5);
+        result = new SeckillResult<Execution>(true, execution);
         return result;
     }
 

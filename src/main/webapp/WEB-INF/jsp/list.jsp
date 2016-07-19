@@ -4,6 +4,7 @@
 <html lang="zh-CN">
 <head>
     <title>列表</title>
+    <meta charset="utf-8">
     <%@include file="common/head.jsp"%>
 </head>
 <body>

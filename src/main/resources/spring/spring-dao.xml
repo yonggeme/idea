@@ -8,7 +8,7 @@
        http://www.springframework.org/schema/context/spring-context.xsd">
     <!-- 配置整合mybatis过程 -->
     <!-- 配置整合数据库相关的properties属性 -->
-    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <context:property-placeholder location="classpath:jdbc.properties,classpath:redis.properties"/>
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${jdbc.driver}"/>
         <property name="jdbcUrl" value="${jdbc.url}"/>
@@ -44,5 +44,11 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <!-- 给树需要扫描的Dao接口包 -->
         <property name="basePackage" value="com.idea.dao"/>
+    </bean>
+
+    <!-- RedisDao -->
+    <bean class="com.idea.dao.cache.RedisDao">
+        <constructor-arg index="0" value="${redis.host}"/>
+        <constructor-arg index="1" value="${redis.port}"/>
     </bean>
 </beans>

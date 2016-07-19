@@ -38,6 +38,7 @@ public interface SeckillService {
 
     /**
      * 执行秒杀接口
+     * @parm seckillId
      * @param md5
      * @param userPhone
      * @return
@@ -45,4 +46,12 @@ public interface SeckillService {
     Execution executeSeckill(long seckillId, String md5, long userPhone)
             throws CloseException, DataReWriteException, RepeatException, SeckillException;
 
+    /**
+     * 执行秒杀接口 by 存储过程
+     * @parm seckillId
+     * @param md5
+     * @param userPhone
+     * @return
+     */
+    Execution executionSeckillByProcedure(long seckillId, long userPhone, String md5);
 }
